@@ -22,7 +22,8 @@
         "pages/kvkk.html",
         "pages/kullanim-sartlari.html",
         "pages/hizmet-sozlesmesi.html",
-        "demo/index.html"
+        "demo/index.html",
+        "product-discovery-bot/index.html"
     ],
     "transitionalPages": {
         "$comment": "URL-compatibility pages kept during the migration window; never listed in the sitemap.",
@@ -46,6 +47,7 @@
         "domains/investment-intelligence/analytics/scripts/",
         "domains/investment-intelligence/analytics/styles/",
         "demo/",
+        "product-discovery-bot/",
         "data/currency/",
         "data/investment-analytics/",
         "images/",
