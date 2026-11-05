@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProductDiscoverBot — Teknoify</title>
+<meta name="description" content="ProductDiscoverBot, Teknoify'a ait otomatik bir okuyucudur. Herkese açık ürün bilgilerini okur, robots.txt kurallarına uyar ve sınırlı bütçelerle çalışır.">
+<link rel="canonical" href="https://teknoify.com/product-discovery-bot/">
+<meta name="robots" content="index,follow">
+<!--
+  Deliberately standalone: no shared shell, no external stylesheet, no script,
+  no image, no font. Every other page on this site ends in a footer that carries
+  a contact address, and this page must not carry one at all. A page with no
+  external references also cannot hide a contact endpoint in a script, a
+  stylesheet or a source map, which is easier to guarantee than to audit.
+-->
+<style>
+  :root {
+    --canvas: #070a10;
+    --surface: #0e121a;
+    --inset: #0a0d14;
+    --fg: #eef1f6;
+    --fg-muted: #9aa5b5;
+    --accent: #8fe3ff;
+    --border: rgba(143, 227, 255, 0.28);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    padding: 0 16px;
+    background: var(--canvas);
+    color: var(--fg);
+    font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 46rem; margin: 0 auto; padding: 56px 0 72px; }
+  .eyebrow {
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 10px;
+  }
+  h1 { font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1.2; margin: 0 0 8px; }
+  h2 {
+    font-size: 1.05rem; margin: 40px 0 12px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .lede { color: var(--fg-muted); margin: 0 0 8px; }
+  code {
+    background: var(--inset); border: 1px solid var(--border); border-radius: 4px;
+    padding: 1px 5px; font-size: 0.9em;
+  }
+  ul { padding-left: 1.15rem; }
+  li { margin: 7px 0; }
+  .panel {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px; margin: 18px 0;
+  }
+  .panel p:last-child { margin-bottom: 0; }
+  .ua {
+    display: block; background: var(--inset); border: 1px solid var(--border);
+    border-radius: 6px; padding: 10px 12px; margin: 10px 0 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.86rem; word-break: break-all;
+  }
+  [lang="en"] { margin-top: 8px; }
+  footer {
+    max-width: 46rem; margin: 0 auto; padding: 22px 0 48px;
+    border-top: 1px solid var(--border); color: var(--fg-muted); font-size: 0.86rem;
+  }
+  a { color: var(--accent); }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --canvas: #ffffff; --surface: #f6f8fb; --inset: #eef2f7;
+      --fg: #0d1218; --fg-muted: #4a5564; --accent: #0b6e8f;
+      --border: rgba(11, 110, 143, 0.22);
+    }
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Teknoify</p>
+  <h1>ProductDiscoverBot</h1>
+  <p class="lede">Herkese açık ürün bilgilerini okuyan otomatik bir istemci.</p>
+
+  <p><strong>ProductDiscoverBot, Teknoify'a aittir.</strong> Web sitelerinde herkese
+  açık olarak yayınlanan ürün bilgilerini okur ve bu okumaları daha sonra yeniden
+  kullanmak üzere saklayabilir.</p>
+
+  <div class="panel">
+    <p>Bu istemcinin kendini tanıttığı dize:</p>
+    <span class="ua">ProductDiscoverBot/0.1 (+https://teknoify.com/product-discovery-bot)</span>
+  </div>
+
+  <h2>Ne yapar</h2>
+  <ul>
+    <li><strong>Yalnızca herkese açık ürün verilerini okur.</strong> Sayfalarda yayınlanan
+      yapılandırılmış ürün verilerini (schema.org) okur.</li>
+    <li><strong><code>robots.txt</code> kurallarına uyar.</strong> Bir site otomatik
+      erişimi kısıtlıyorsa, o kısıtlamaya uyulur ve sayfa istenmez.</li>
+    <li><strong>Sınırlı bütçelerle çalışır.</strong> Her okuma için istek sayısı, indirilen
+      bayt miktarı ve toplam süre üst sınırlarına bağlıdır; bu sınırlara ulaşıldığında
+      okuma durur.</li>
+    <li><strong>Okunan ürün kayıtlarını saklayabilir.</strong> Aynı bilgi kısa süre içinde
+      yeniden istendiğinde, siteye tekrar istek göndermek yerine saklanan kayıt kullanılır.</li>
+  </ul>
+
+  <h2>Ne yapmaz</h2>
+  <ul>
+    <li><strong>Oturum açmaz.</strong> Hiçbir siteye giriş yapmaz, kimlik bilgisi kullanmaz.</li>
+    <li><strong>Form göndermez.</strong> Hiçbir formu doldurmaz veya göndermez.</li>
+    <li><strong>Ödeme ve müşteri verilerine erişmez.</strong> Sepet, ödeme ve hesap
+      sayfalarını okumaz; müşteri verisi toplamaz.</li>
+  </ul>
+
+  <h2>Site sahipleri otomatik erişimi nasıl yönetir</h2>
+  <p>Otomatik erişim, sitenizin kendi <code>robots.txt</code> dosyasıyla yönetilir.
+  ProductDiscoverBot bu dosyadaki kurallara uyar. Yalnızca bu istemciyi kısıtlamak için:</p>
+  <div class="panel">
+    <span class="ua">User-agent: ProductDiscoverBot
+Disallow: /</span>
+  </div>
+  <p class="lede">Bir kuralın yürürlüğe girmesi, saklanan <code>robots.txt</code>
+  kaydının tazelenmesine bağlı olarak kısa bir süre alabilir.</p>
+
+  <h2>Doğrudan iletişim kanalı</h2>
+  <div class="panel">
+    <p><strong>Bu sürümde doğrulanmış bir doğrudan iletişim kanalı yayınlanmamıştır.</strong>
+    Bu sayfada bilinçli olarak e-posta adresi, iletişim formu veya başka bir doğrudan
+    iletişim yöntemi yer almaz.</p>
+    <p class="lede">Doğrulanmış bir kanal belirlendiğinde bu bölüme eklenecek ve
+    sayfanın adresi (<code>teknoify.com/product-discovery-bot</code>) değişmeyecektir.
+    Bu arada otomatik erişim, yukarıdaki <code>robots.txt</code> kuralıyla
+    tamamen yönetilebilir.</p>
+  </div>
+
+  <div lang="en">
+    <h2>In English</h2>
+    <p><strong>ProductDiscoverBot belongs to Teknoify.</strong> It reads publicly
+    accessible product information published on websites, and it may store those
+    product observations so that they can be reused instead of requesting a site again.</p>
+    <ul>
+      <li>It respects <code>robots.txt</code>.</li>
+      <li>It operates under bounded request, byte and time budgets, and stops when a
+        budget is reached.</li>
+      <li>It does not log in and does not submit forms.</li>
+      <li>It does not access checkout pages or customer data.</li>
+      <li>Website operators control automated access through their own
+        <code>robots.txt</code>; to restrict this client specifically, disallow the
+        user agent <code>ProductDiscoverBot</code>.</li>
+      <li><strong>A verified direct contact channel is not published in this
+        release.</strong> This page deliberately carries no e-mail address and no
+        contact form. When a verified channel exists it will be added to this page, at
+        this same address.</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <p>Teknoify · <a href="https://teknoify.com/">teknoify.com</a></p>
+</footer>
+</body>
+</html>
