@@ -14,3 +14,7 @@
 # Static data consumed by the investment page: short cache, always revalidate (updated daily by a workflow).
 /data/*
   Cache-Control: public, max-age=300, must-revalidate
+
+# The password-reset redirect carries a one-time Firebase code in its query string: never cache it.
+/reset-password.html
+  Cache-Control: no-store

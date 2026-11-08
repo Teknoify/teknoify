@@ -18,6 +18,15 @@ https://www.teknoify.com/*   https://teknoify.com/:splat   301!
 /pages/investment-airlines.html  https://platform.teknoify.com/   302
 /pages/investment-airlines       https://platform.teknoify.com/   302
 
+# --- Firebase password-reset action handler -> platform.teknoify.com/reset-password ---
+# Firebase's Password reset template still sends its action link to /reset-password.html, and the
+# Console refuses to change that action URL (EMAIL_TEMPLATE_UPDATE_NOT_ALLOWED). This bridges the old
+# link to the platform's reset handler. Netlify forwards the whole query string unchanged (mode,
+# oobCode, apiKey, lang, continueUrl), so nothing here reads or rebuilds the one-time code.
+# Forced (!) because the static compatibility page still exists in the artifact; deleting this line
+# restores it. 302, not 301, so no browser caches the mapping. Exact path only.
+/reset-password.html         https://platform.teknoify.com/reset-password   302!
+
 # --- Retired admin / application-only surfaces ---
 /pages/impersonate.html      /404.html   404
 /pages/impersonate           /404.html   404
